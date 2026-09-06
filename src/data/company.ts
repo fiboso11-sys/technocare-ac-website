@@ -22,8 +22,13 @@ export const company = {
   serviceArea: "Chennai and nearby areas",
   email: "",
   whatsapp: "",
+  /** Exact Google Maps / Business place URL only. Leave empty until owner supplies it. */
+  googleMapsPlaceUrl: "",
+  /** Legacy alias — prefer googleMapsPlaceUrl. Kept empty; do not invent a URL. */
   googleMapsUrl: "",
   googleReviewsUrl: "",
+  /** HTTPS Maps search query used when no verified place URL is configured. */
+  googleMapsFallbackQuery: "TECHNO CARE Nolambur Chennai",
   googleRating: "5.0",
   googleReviewCount: 3,
   workingHours: "",

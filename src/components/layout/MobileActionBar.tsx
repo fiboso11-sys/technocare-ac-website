@@ -1,7 +1,7 @@
 import { FileText, MapPin, Phone } from "lucide-react";
 import { company, phoneHref } from "@/data/company";
 import { cta } from "@/data/navigation";
-import { directionsUrl } from "@/lib/maps";
+import { getGoogleMapsUrl } from "@/lib/maps";
 
 export function MobileActionBar() {
   if (!company.showMobileActionBar) return null;
@@ -20,7 +20,7 @@ export function MobileActionBar() {
       external: false,
     },
     {
-      href: directionsUrl(),
+      href: getGoogleMapsUrl(),
       label: "Directions",
       icon: MapPin,
       external: true,

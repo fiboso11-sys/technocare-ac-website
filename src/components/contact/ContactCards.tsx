@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { company, emailHref, hasEmail, hasPhone, phoneHref } from "@/data/company";
-import { directionsUrl } from "@/lib/maps";
+import { getGoogleMapsUrl } from "@/lib/maps";
 
 type ContactCardProps = {
   title: string;
@@ -60,7 +60,7 @@ export function ContactCards() {
       <Card
         icon={MapPin}
         title="Address"
-        href={directionsUrl()}
+        href={getGoogleMapsUrl()}
         body={
           <>
             <span className="block">{company.addressLine1}</span>

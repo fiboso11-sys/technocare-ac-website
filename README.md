@@ -73,8 +73,8 @@ Empty fields are hidden in the interface. Do not invent missing details.
 - `showEmail` — keep `false` until a real email exists
 - `showBusinessHours` — keep `false` until weekly hours are verified
 - `showGoogleRating` — rating block on the homepage
-- `googleMapsUrl` / `googleReviewsUrl` — set only when exact URLs are available
-- Directions currently use a Google Maps HTTPS search of the approved address
+- `googleMapsPlaceUrl` / `googleReviewsUrl` — set only when exact Google Maps / reviews URLs are available
+- `googleMapsFallbackQuery` — HTTPS Maps search used until a place URL is set (default: TECHNO CARE Nolambur Chennai)
 
 ## Project structure
 
@@ -95,7 +95,11 @@ public/
 
 - Call links use `tel:+919444927947`
 - Display number is `094449 27947`
-- Directions use `https://www.google.com/maps/dir/?api=1&destination=...` until a verified place URL is stored in `company.googleMapsUrl`
+- Directions use `getGoogleMapsUrl()` in `src/lib/maps.ts`:
+  - verified `company.googleMapsPlaceUrl` when set
+  - otherwise HTTPS Maps search for `company.googleMapsFallbackQuery`
+  - never build `/maps/dir` from the postal address alone
+- Visible address text stays as approved in `company.ts` and is separate from Maps navigation
 
 ## SEO
 

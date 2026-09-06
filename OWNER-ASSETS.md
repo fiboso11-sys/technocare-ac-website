@@ -55,4 +55,5 @@ Cards fall back to professional icons when a photo path is not set.
 - Exact pixel dimensions are not required; `next/image` handles responsive sizing
 - Prefer landscape for hero and service cards
 - Alt text should describe the work shown without inventing employee names
-- Keep Google Maps / reviews URLs in `src/data/company.ts` when you have the exact place links
+- Keep Google Maps place / reviews URLs in `src/data/company.ts` (`googleMapsPlaceUrl`, `googleReviewsUrl`) when you have the exact official links
+- Until `googleMapsPlaceUrl` is set, Directions opens an HTTPS Maps search for `googleMapsFallbackQuery` (TECHNO CARE Nolambur Chennai) — not an address-only `/maps/dir` link
