@@ -3,7 +3,7 @@ export const company = {
   legalName: "",
   shortName: "TECHNO CARE",
   domain: "technocareac.com",
-  siteUrl: "https://technocareac.com",
+  siteUrl: "https://www.technocareac.com",
   tagline: "Professional AC & HVAC Services in Chennai",
   description:
     "TECHNO CARE provides air-conditioning and HVAC services in Chennai and nearby areas, covering installation, repair, maintenance, and cleaning.",

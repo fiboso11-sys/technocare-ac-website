@@ -4,7 +4,7 @@ export function cn(...classes: Array<string | false | null | undefined>) {
 
 export function getSiteUrl() {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  return fromEnv || "https://technocareac.com";
+  return fromEnv || "https://www.technocareac.com";
 }
 
 export function absoluteUrl(path = "/") {

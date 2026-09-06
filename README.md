@@ -2,7 +2,8 @@
 
 Corporate website for **TECHNO CARE**, an air-conditioning and HVAC service business in Nolambur, Chennai.
 
-Production domain: [https://technocareac.com](https://technocareac.com)
+Production domain: [https://www.technocareac.com](https://www.technocareac.com)  
+Apex `https://technocareac.com` redirects to the www host.
 
 This repository is the official online presence. Content is driven from centralized data files so company details can be updated in one place.
 
@@ -49,7 +50,7 @@ Copy `.env.example` to `.env.local` and fill values only when they exist.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL. Production value: `https://technocareac.com` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL. Production value: `https://www.technocareac.com` |
 | `CONTACT_TO_EMAIL` | Destination inbox for website enquiries |
 | `RESEND_API_KEY` | Resend API key for email delivery |
 
@@ -98,7 +99,7 @@ public/
 
 ## SEO
 
-- Canonical host: `https://technocareac.com`
+- Canonical host: `https://www.technocareac.com`
 - `src/app/sitemap.ts` and `src/app/robots.ts`
 - Open Graph image via `src/app/opengraph-image.tsx`
 - JSON-LD uses `HVACBusiness` with verified name, telephone, address, and area served
@@ -111,11 +112,11 @@ Do not deploy until the owner has approved the local site.
 When deploying:
 
 1. Import the GitHub repository into Vercel
-2. Set `NEXT_PUBLIC_SITE_URL=https://technocareac.com`
-3. Add `technocareac.com` as the primary domain
-4. Add `www.technocareac.com` and redirect it to the apex host
-5. Use only the DNS records Vercel shows for this project
-6. Do not change MX, SPF, DKIM, DMARC, or unrelated TXT records
+2. Prefer `NEXT_PUBLIC_SITE_URL=https://www.technocareac.com` (code also falls back to this)
+3. Attach `www.technocareac.com` as the primary website host
+4. Attach `technocareac.com` and redirect apex → www (Next.js host redirect is configured in `next.config.ts`)
+5. Domain is registered on Vercel with Vercel nameservers — no third-party DNS edits unless Vercel shows otherwise
+6. Do not change MX, SPF, DKIM, DMARC, or unrelated TXT records on any third-party DNS
 
 ## Quality checks
 
