@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="AC and HVAC technical illustration">
+  <rect width="800" height="500" fill="#eef4f6"/>
+  <rect x="80" y="90" width="280" height="200" rx="12" fill="#155e75"/>
+  <rect x="108" y="118" width="224" height="90" rx="6" fill="#0b1f2e"/>
+  <g stroke="#7bd4cf" stroke-width="4">
+    <line x1="128" y1="132" x2="128" y2="196"/>
+    <line x1="160" y1="132" x2="160" y2="196"/>
+    <line x1="192" y1="132" x2="192" y2="196"/>
+    <line x1="224" y1="132" x2="224" y2="196"/>
+    <line x1="256" y1="132" x2="256" y2="196"/>
+    <line x1="288" y1="132" x2="288" y2="196"/>
+  </g>
+  <rect x="420" y="140" width="220" height="140" rx="12" fill="#0f4d63"/>
+  <circle cx="530" cy="210" r="38" fill="none" stroke="#7bd4cf" stroke-width="6"/>
+  <path d="M80 190 C40 190 40 280 90 310 H520" fill="none" stroke="#0f8a86" stroke-width="8" stroke-linecap="round"/>
+</svg>
