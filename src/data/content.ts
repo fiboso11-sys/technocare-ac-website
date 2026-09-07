@@ -30,28 +30,38 @@ export const processSteps: ProcessStep[] = [
 
 export const whyChooseItems: TrustItem[] = [
   {
-    title: "Clear service approach",
+    title: "Multi-Brand Choice",
     description:
-      "The work starts with the actual requirement — installation, repair, maintenance, or cleaning — rather than a generic pitch.",
+      "Sales and service support across multiple AC brands, including Panasonic, IFB, Daikin, O General and Mitsubishi Electric.",
   },
   {
-    title: "Practical AC & HVAC solutions",
+    title: "Professional Installation",
     description:
-      "Recommendations stay focused on restoring or installing cooling equipment so it can be used as intended.",
+      "Careful placement, connections and handover so a new AC is ready for everyday use.",
   },
   {
-    title: "Installation, repair and maintenance support",
+    title: "Service & Repair",
     description:
-      "TECHNO CARE covers the core AC and HVAC jobs customers typically need, including duct and vent work.",
+      "Practical fault-finding and repair when cooling, noise, leaks or start-up problems appear.",
   },
   {
-    title: "Customer-focused communication",
+    title: "Preventive Maintenance / AMC",
     description:
-      "Findings and next steps are explained in plain language so you can decide on the work with a clear picture.",
+      "Scheduled servicing and AMC options that help keep systems cleaner and more dependable.",
+  },
+  {
+    title: "Local Chennai Support",
+    description:
+      "Based in Nolambur, Chennai — clear communication and local service across Chennai and nearby areas.",
   },
 ];
 
 export const acHighlights = [
+  {
+    title: "Sales & Supply",
+    description:
+      "Multi-brand AC sales for residential and commercial cooling needs, with installation and after-sales support.",
+  },
   {
     title: "Installation",
     description:
@@ -63,22 +73,96 @@ export const acHighlights = [
       "Fault finding and repair when a unit is not cooling, leaking, noisy, or failing to run as it should.",
   },
   {
-    title: "Maintenance",
+    title: "Maintenance & AMC",
     description:
-      "Scheduled servicing to keep systems cleaner, more reliable, and ready for regular use.",
+      "Scheduled servicing and AMC options to keep systems cleaner, more reliable, and ready for regular use.",
   },
   {
-    title: "Cleaning",
+    title: "Cleaning & Refurbishing",
     description:
-      "Cleaning of AC equipment and related airflow paths to support better performance and indoor comfort.",
+      "Cleaning of AC equipment and refurbishing support when restore-over-replace is the practical path.",
   },
 ] as const;
 
 export const aboutContent = {
   whoWeAre:
-    "TECHNO CARE is an air-conditioning and HVAC service business based in Nolambur, Chennai. The company provides installation, repair, maintenance, and cleaning services for AC and HVAC systems across Chennai and nearby areas.",
+    "TECHNO CARE is an aircondition authorised dealer for sales and service based in Nolambur, Chennai. The business is also a multi-brand AC reseller and service provider covering AC sales, installation, service, repair, AMC, and refurbishing across Chennai and nearby areas.",
   whatWeDo:
-    "The work covers split and other air-conditioning systems, portable AC service, HVAC system repair and maintenance, and HVAC duct and vent installation, repair, and cleaning. Each request is treated as a technical service job: understand the requirement, assess the equipment, and complete the agreed work.",
+    "TECHNO CARE provides multi-brand AC sales and service, supporting brands including Panasonic, IFB, Daikin, O General and Mitsubishi Electric. Work also covers portable AC support, HVAC system repair and maintenance, and HVAC duct and vent installation, repair, and cleaning where needed.",
   approach:
-    "Service begins with the customer’s requirement. That may be a new installation, a system that has stopped cooling, routine servicing, or cleaning. TECHNO CARE discusses the job, assesses what is needed, and proceeds with the recommended work once it is agreed.",
+    "Service begins with the customer’s requirement. That may be buying a new AC, a new installation, a system that has stopped cooling, routine servicing, AMC, or refurbishing. TECHNO CARE discusses the job, assesses what is needed, and proceeds with the recommended work once it is agreed.",
+  brandsIntro:
+    "TECHNO CARE provides sales and service support across multiple AC brands. Brand coverage highlighted on this site includes Panasonic, IFB, Daikin, O General and Mitsubishi Electric.",
 } as const;
+
+/** Lead form service choices (labels for customers; values map to service slugs). */
+export const leadServiceOptions = [
+  { value: "ac-sales", label: "Buy New AC" },
+  { value: "ac-installation", label: "AC Installation" },
+  { value: "ac-repair", label: "AC Repair" },
+  { value: "ac-maintenance", label: "AC Service / Maintenance" },
+  { value: "ac-cleaning", label: "AC Cleaning" },
+  { value: "ac-amc", label: "AMC" },
+  { value: "ac-refurbishing", label: "AC Refurbishing" },
+  { value: "hvac-system-repair", label: "HVAC" },
+  { value: "duct-vent-cleaning", label: "Duct & Vent" },
+  { value: "other", label: "Other" },
+] as const;
+
+/** Homepage service presentation matching the reference concept. */
+export const homepageServiceCards = [
+  {
+    title: "AC Sales & Supply",
+    description: "Multi-brand residential and commercial AC supply.",
+    href: "/services/ac-sales",
+    icon: "snowflake" as const,
+  },
+  {
+    title: "AC Installation",
+    description: "Professional fitting and working handover.",
+    href: "/services/ac-installation",
+    icon: "snowflake" as const,
+  },
+  {
+    title: "AC Repair",
+    description: "Fault finding when cooling is not right.",
+    href: "/services/ac-repair",
+    icon: "wrench" as const,
+  },
+  {
+    title: "AC Maintenance & Servicing",
+    description: "Scheduled servicing for reliable cooling.",
+    href: "/services/ac-maintenance",
+    icon: "clipboardCheck" as const,
+  },
+  {
+    title: "AC Cleaning",
+    description: "Cleaning for better airflow and everyday use.",
+    href: "/services/ac-cleaning",
+    icon: "sparkles" as const,
+  },
+  {
+    title: "AC Refurbishing",
+    description: "Inspect, repair and restore serviceable units.",
+    href: "/services/ac-refurbishing",
+    icon: "settings" as const,
+  },
+  {
+    title: "AMC",
+    description: "Annual maintenance for homes and premises.",
+    href: "/services/ac-amc",
+    icon: "shield" as const,
+  },
+  {
+    title: "HVAC Services",
+    description: "System-level HVAC repair and maintenance.",
+    href: "/services#hvac",
+    icon: "airVent" as const,
+  },
+  {
+    title: "Duct & Vent Services",
+    description: "Duct and vent installation, repair and cleaning.",
+    href: "/services#duct",
+    icon: "pipe" as const,
+  },
+] as const;

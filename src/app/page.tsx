@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
 import { AboutPreview } from "@/components/sections/AboutPreview";
-import { AcServicesFeature } from "@/components/sections/AcServicesFeature";
+import { BrandsSection } from "@/components/sections/BrandsSection";
+import { ComfortLifestyleSection } from "@/components/sections/ComfortLifestyleSection";
+import { CommercialSolutionsSection } from "@/components/sections/CommercialSolutionsSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { CustomerJourney } from "@/components/sections/CustomerJourney";
+import { GoogleTrustSection } from "@/components/sections/GoogleTrustSection";
 import { Hero } from "@/components/sections/Hero";
-import { HvacServicesFeature } from "@/components/sections/HvacServicesFeature";
 import { LocationAndTrust } from "@/components/sections/LocationAndTrust";
-import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { WhyChoose } from "@/components/sections/WhyChoose";
+import { WorkGallery } from "@/components/sections/WorkGallery";
+import { company } from "@/data/company";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "TECHNO CARE | AC & HVAC Services in Chennai",
-  description:
-    "TECHNO CARE provides AC and HVAC installation, repair, maintenance, and cleaning in Chennai and nearby areas. Call 094449 27947 to request service.",
+  title: "TECHNO CARE | Aircondition Authorised Dealer Sales & Service Chennai",
+  description: `${company.description} Call ${company.phoneDisplay}.`,
   path: "/",
 });
 
@@ -23,13 +26,16 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <BrandsSection compact />
       <TrustStrip />
       <ServicesOverview />
-      <AboutPreview />
+      <ComfortLifestyleSection />
+      <CommercialSolutionsSection />
       <WhyChoose />
-      <AcServicesFeature />
-      <HvacServicesFeature />
-      <ProcessSteps />
+      <CustomerJourney />
+      <WorkGallery mode="featured" />
+      <AboutPreview />
+      <GoogleTrustSection />
       <ServiceArea />
       <LocationAndTrust />
       <CTASection />

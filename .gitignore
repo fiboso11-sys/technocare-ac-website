@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# Temporary brand logo download/unpack workspace (not for public linking)
+/public/images/technocare/brands/_incoming/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

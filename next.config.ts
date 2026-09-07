@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         destination: "https://www.technocareac.com/:path*",
         permanent: true,
       },
+      {
+        source: "/services/ac-sales-supply",
+        destination: "/services/ac-sales",
+        permanent: true,
+      },
     ];
   },
 };

@@ -5,8 +5,8 @@ import { company } from "@/data/company";
 const items = [
   {
     icon: Snowflake,
-    label: "AC & HVAC services",
-    detail: "Installation to cleaning",
+    label: "Authorised Dealer",
+    detail: company.secondaryPositioning,
   },
   {
     icon: MapPin,
@@ -15,8 +15,8 @@ const items = [
   },
   {
     icon: Wrench,
-    label: "Installation • Repair • Maintenance",
-    detail: "Practical, clear service",
+    label: "Sales • Service • Repair • AMC",
+    detail: "Complete AC lifecycle support",
   },
   {
     icon: Phone,

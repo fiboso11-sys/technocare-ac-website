@@ -10,10 +10,10 @@ export function WhyChoose() {
         <SectionHeading
           className="mb-8"
           eyebrow="Why choose TECHNO CARE"
-          title="Clear advice and careful AC & HVAC work"
-          description="We start with what you need, explain the options in plain language, and complete the agreed job carefully."
+          title="Clear advice for multi-brand AC sales and service"
+          description="We start with what you need — sales, installation, service, repair, AMC, or refurbishing — and complete the agreed job carefully."
         />
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {whyChooseItems.map((item) => (
             <article
               key={item.title}

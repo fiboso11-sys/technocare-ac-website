@@ -14,8 +14,8 @@ export function AboutPreview() {
         <div>
           <SectionHeading
             eyebrow="About TECHNO CARE"
-            title={`Local AC & HVAC service from ${company.locality}, ${company.city}`}
-            description={aboutContent.whoWeAre}
+            title={`${company.name} in ${company.locality}, ${company.city}`}
+            description={`${company.positioning}. ${aboutContent.whoWeAre}`}
           />
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
             {aboutContent.whatWeDo}

@@ -11,7 +11,7 @@ export function ServiceArea() {
       <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
         <SectionHeading
           eyebrow="Service area"
-          title="AC & HVAC services across Chennai"
+          title="Multi-brand AC service across Chennai"
           description={`Serving ${company.serviceArea}. The workshop and office location is in ${company.locality}, ${company.city}.`}
         />
         <div className="rounded-lg border border-border bg-background p-6">

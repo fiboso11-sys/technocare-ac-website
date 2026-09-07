@@ -18,15 +18,16 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
-        description="This page explains, in general terms, how information collected through the TECHNO CARE website is used. It is provided for website visitors and should be reviewed by the business owner with legal counsel before being treated as a final legal document."
+        description="This page explains, in general terms, how information collected through the TECHNO CARE website is used. It should be reviewed with legal counsel before being treated as a final legal document."
       />
       <Section className="bg-surface">
         <Container className="max-w-3xl space-y-8 text-sm leading-relaxed text-muted-foreground">
           <section>
             <h2 className="text-lg font-semibold text-foreground">Who we are</h2>
             <p className="mt-2">
-              This website is operated by {company.name}, an air-conditioning and
-              HVAC service business in {company.city}, {company.state}, {company.country}.
+              This website is operated by {company.name}, a multi-brand AC
+              reseller and service provider in {company.city}, {company.state},{" "}
+              {company.country}.
             </p>
           </section>
           <section>

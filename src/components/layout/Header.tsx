@@ -8,12 +8,13 @@ import { BrandMark } from "@/components/brand/BrandMark";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { company, phoneHref } from "@/data/company";
-import { cta, primaryNavigation } from "@/data/navigation";
+import { cta, getPrimaryNavigation } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const navigation = getPrimaryNavigation();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -34,7 +35,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {primaryNavigation.map((item) => {
+          {navigation.map((item) => {
             const active =
               item.href === "/"
                 ? pathname === "/"
@@ -108,7 +109,7 @@ export function Header() {
           className="border-t border-border bg-surface lg:hidden"
         >
           <Container className="flex min-h-[calc(100dvh-4.25rem-env(safe-area-inset-top))] flex-col gap-1 overflow-y-auto py-4">
-            {primaryNavigation.map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

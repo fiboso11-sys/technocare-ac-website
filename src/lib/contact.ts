@@ -1,6 +1,11 @@
 import { company } from "@/data/company";
-import { services } from "@/data/services";
-import { contactSchema, isKnownService, type ContactInput } from "@/lib/contact-schema";
+import { leadServiceOptions } from "@/data/content";
+import {
+  contactSchema,
+  isKnownPreferredBrand,
+  isKnownService,
+  type ContactInput,
+} from "@/lib/contact-schema";
 
 export type ContactResult =
   | { ok: true; notice?: string }
@@ -21,8 +26,9 @@ function formDataToObject(formData: FormData): Record<string, string> {
 }
 
 function serviceTitle(slug: string) {
-  if (slug === "other") return "Other AC/HVAC Enquiry";
-  return services.find((service) => service.slug === slug)?.title ?? slug;
+  return (
+    leadServiceOptions.find((option) => option.value === slug)?.label ?? slug
+  );
 }
 
 async function deliverEmail(payload: ContactInput) {
@@ -42,15 +48,13 @@ async function deliverEmail(payload: ContactInput) {
     body: JSON.stringify({
       from: "TECHNO CARE Website <onboarding@resend.dev>",
       to: [toEmail],
-      reply_to: payload.email || undefined,
       subject: `Website enquiry: ${serviceTitle(payload.service)}`,
       text: [
         `Name: ${payload.name}`,
         `Phone: ${payload.phone}`,
-        `Email: ${payload.email || "Not provided"}`,
         `Service: ${serviceTitle(payload.service)}`,
         `Location / Area: ${payload.location || "Not provided"}`,
-        `Preferred contact: ${payload.preferredContact}`,
+        `Preferred brand: ${payload.preferredBrand || "Not provided"}`,
         "",
         payload.message,
       ].join("\n"),
@@ -80,8 +84,8 @@ export async function submitContactEnquiry(
 
   const parsed = contactSchema.safeParse({
     ...raw,
-    email: raw.email ?? "",
     location: raw.location ?? "",
+    preferredBrand: raw.preferredBrand ?? "",
   });
 
   if (!parsed.success) {
@@ -102,6 +106,14 @@ export async function submitContactEnquiry(
       ok: false,
       error: "Please select a valid service.",
       fieldErrors: { service: "Please select a valid service." },
+    };
+  }
+
+  if (!isKnownPreferredBrand(parsed.data.preferredBrand)) {
+    return {
+      ok: false,
+      error: "Please choose a valid preferred brand.",
+      fieldErrors: { preferredBrand: "Please choose a valid preferred brand." },
     };
   }
 

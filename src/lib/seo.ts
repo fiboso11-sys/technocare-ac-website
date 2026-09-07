@@ -39,11 +39,10 @@ export function defaultMetadata(): Metadata {
   return {
     metadataBase: new URL(getSiteUrl()),
     title: {
-      default: "TECHNO CARE | AC & HVAC Services in Chennai",
+      default: "TECHNO CARE | Aircondition Authorised Dealer Sales & Service Chennai",
       template: "%s",
     },
-    description:
-      "TECHNO CARE provides AC and HVAC installation, repair, maintenance, and cleaning services in Chennai and nearby areas. Call 094449 27947.",
+    description: `${company.description} Call ${company.phoneDisplay}.`,
     applicationName: company.name,
     authors: [{ name: company.name }],
     creator: company.name,

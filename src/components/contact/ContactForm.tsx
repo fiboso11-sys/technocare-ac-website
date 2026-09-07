@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { sendContactEnquiry } from "@/app/actions/contact";
-import { services } from "@/data/services";
+import { preferredBrandOptions } from "@/data/brands";
+import { leadServiceOptions } from "@/data/content";
 import { company } from "@/data/company";
 import { contactSchema } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
@@ -10,12 +12,23 @@ import { cn } from "@/lib/utils";
 const fieldClass =
   "mt-1.5 w-full rounded-md border border-border bg-surface px-3 py-2.5 text-base text-foreground";
 
-export function ContactForm() {
+type ContactFormProps = {
+  defaultService?: string;
+};
+
+export function ContactForm({ defaultService = "" }: ContactFormProps) {
+  const searchParams = useSearchParams();
   const startedAtRef = useRef<number | null>(null);
   const [pending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const serviceFromQuery = searchParams.get("service") ?? "";
+  const initialService =
+    leadServiceOptions.some((option) => option.value === (defaultService || serviceFromQuery))
+      ? defaultService || serviceFromQuery
+      : "";
 
   useEffect(() => {
     startedAtRef.current = Date.now();
@@ -29,8 +42,8 @@ export function ContactForm() {
     const raw = Object.fromEntries(formData.entries());
     const parsed = contactSchema.safeParse({
       ...raw,
-      email: String(raw.email ?? ""),
       location: String(raw.location ?? ""),
+      preferredBrand: String(raw.preferredBrand ?? ""),
       website: String(raw.website ?? ""),
     });
 
@@ -63,10 +76,7 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div
-        className="rounded-lg border border-border bg-surface p-6"
-        role="status"
-      >
+      <div className="rounded-lg border border-border bg-surface p-6" role="status">
         <h2 className="text-lg font-semibold">Request received</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Thank you. For a faster response, you can also call {company.phoneDisplay}.
@@ -78,7 +88,10 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="rounded-lg border border-border bg-surface p-5 sm:p-6">
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
-
+      <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+        {company.positioning}. Tell us whether you need AC sales, installation, service, AMC or
+        refurbishing.
+      </p>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
           id="name"
@@ -100,17 +113,6 @@ export function ContactForm() {
       </div>
 
       <div className="mt-4">
-        <Field
-          id="email"
-          name="email"
-          label="Email"
-          type="email"
-          autoComplete="email"
-          error={fieldErrors.email}
-        />
-      </div>
-
-      <div className="mt-4">
         <label htmlFor="service" className="text-sm font-medium">
           Service required
           <span aria-hidden="true"> *</span>
@@ -120,18 +122,17 @@ export function ContactForm() {
           name="service"
           required
           className={fieldClass}
-          defaultValue=""
+          defaultValue={initialService}
           aria-invalid={Boolean(fieldErrors.service)}
         >
           <option value="" disabled>
             Select a service
           </option>
-          {services.map((service) => (
-            <option key={service.slug} value={service.slug}>
-              {service.title}
+          {leadServiceOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
-          <option value="other">Other AC/HVAC Enquiry</option>
         </select>
         {fieldErrors.service ? (
           <p className="mt-1 text-sm text-warning">{fieldErrors.service}</p>
@@ -149,6 +150,29 @@ export function ContactForm() {
       </div>
 
       <div className="mt-4">
+        <label htmlFor="preferredBrand" className="text-sm font-medium">
+          Preferred brand <span className="font-normal text-muted-foreground">(optional)</span>
+        </label>
+        <select
+          id="preferredBrand"
+          name="preferredBrand"
+          className={fieldClass}
+          defaultValue=""
+          aria-invalid={Boolean(fieldErrors.preferredBrand)}
+        >
+          <option value="">No preference</option>
+          {preferredBrandOptions.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
+        </select>
+        {fieldErrors.preferredBrand ? (
+          <p className="mt-1 text-sm text-warning">{fieldErrors.preferredBrand}</p>
+        ) : null}
+      </div>
+
+      <div className="mt-4">
         <label htmlFor="message" className="text-sm font-medium">
           Message / requirement
           <span aria-hidden="true"> *</span>
@@ -157,7 +181,7 @@ export function ContactForm() {
           id="message"
           name="message"
           required
-          rows={5}
+          rows={4}
           className={fieldClass}
           aria-invalid={Boolean(fieldErrors.message)}
         />
@@ -165,20 +189,6 @@ export function ContactForm() {
           <p className="mt-1 text-sm text-warning">{fieldErrors.message}</p>
         ) : null}
       </div>
-
-      <fieldset className="mt-4">
-        <legend className="text-sm font-medium">Preferred contact method</legend>
-        <div className="mt-2 flex flex-wrap gap-4 text-sm">
-          <label className="inline-flex items-center gap-2">
-            <input type="radio" name="preferredContact" value="phone" defaultChecked />
-            Phone
-          </label>
-          <label className="inline-flex items-center gap-2">
-            <input type="radio" name="preferredContact" value="email" />
-            Email
-          </label>
-        </div>
-      </fieldset>
 
       {error ? (
         <p className="mt-4 text-sm text-warning" role="alert">
@@ -190,7 +200,7 @@ export function ContactForm() {
         type="submit"
         disabled={pending}
         className={cn(
-          "mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold text-accent-foreground sm:w-auto",
+          "mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground sm:w-auto",
           pending && "opacity-70",
         )}
       >

@@ -1,5 +1,13 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { company, emailHref, hasEmail, hasPhone, phoneHref } from "@/data/company";
+import {
+  company,
+  emailHref,
+  hasEmail,
+  hasPhone,
+  hasSecondaryPhone,
+  phoneHref,
+  phoneSecondaryHref,
+} from "@/data/company";
 import { getGoogleMapsUrl } from "@/lib/maps";
 
 type ContactCardProps = {
@@ -47,11 +55,14 @@ export function ContactCards() {
   return (
     <div className="grid gap-4">
       {hasPhone() ? (
+        <Card icon={Phone} title="Phone" href={phoneHref()} body={company.phoneDisplay} />
+      ) : null}
+      {hasSecondaryPhone() ? (
         <Card
           icon={Phone}
-          title="Phone"
-          href={phoneHref()}
-          body={company.phoneDisplay}
+          title="Alternate phone"
+          href={phoneSecondaryHref()}
+          body={company.phoneSecondaryDisplay}
         />
       ) : null}
       {hasEmail() ? (

@@ -1,7 +1,8 @@
 import { z } from "zod";
-import { services } from "@/data/services";
+import { leadServiceOptions } from "@/data/content";
+import { preferredBrandOptions } from "@/data/brands";
 
-const serviceSlugs = [...services.map((service) => service.slug), "other"];
+const serviceValues = leadServiceOptions.map((option) => option.value);
 
 export const contactSchema = z.object({
   name: z
@@ -15,25 +16,17 @@ export const contactSchema = z.object({
     .min(7, "Please enter a valid phone number.")
     .max(24, "Phone number is too long.")
     .regex(/^[0-9+\-\s()]+$/, "Phone number contains invalid characters."),
-  email: z
-    .string()
-    .trim()
-    .max(120, "Email is too long.")
-    .refine(
-      (value) => value === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-      "Please enter a valid email address.",
-    ),
   service: z
     .string()
     .trim()
     .min(1, "Please select a service."),
   location: z.string().trim().max(120, "Location is too long."),
+  preferredBrand: z.string().trim().max(80, "Preferred brand is too long."),
   message: z
     .string()
     .trim()
     .min(10, "Please add a short message so we can help.")
     .max(2000, "Message is too long."),
-  preferredContact: z.enum(["phone", "email"]).default("phone"),
   website: z.string().max(0, "Unable to send this enquiry."),
   startedAt: z.string().optional(),
 });
@@ -41,5 +34,10 @@ export const contactSchema = z.object({
 export type ContactInput = z.infer<typeof contactSchema>;
 
 export function isKnownService(slug: string) {
-  return serviceSlugs.includes(slug);
+  return serviceValues.includes(slug as (typeof serviceValues)[number]);
+}
+
+export function isKnownPreferredBrand(value: string) {
+  if (!value) return true;
+  return (preferredBrandOptions as readonly string[]).includes(value);
 }

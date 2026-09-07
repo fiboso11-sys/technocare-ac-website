@@ -2,6 +2,43 @@ import type { Service, ServiceCategory } from "@/types/content";
 
 export const services: Service[] = [
   {
+    id: "ac-sales",
+    slug: "ac-sales",
+    category: "ac",
+    title: "AC Sales & Supply",
+    shortTitle: "AC Sales",
+    description:
+      "Multi-brand AC sales and supply for residential and commercial cooling needs in Chennai and nearby areas.",
+    longDescription:
+      "TECHNO CARE is an aircondition authorised dealer for sales and service, supplying multi-brand air-conditioners for homes and commercial premises. Customers can discuss product selection, capacity and brand preference, then arrange installation and after-sales service support. Pricing, stock and specific models are confirmed at the time of enquiry — this page does not list inventory or discounts.",
+    icon: "snowflake",
+    image: "/services/ac-installation.svg",
+    imageAlt: "Illustration of multi-brand AC sales and supply.",
+    benefits: [
+      "Multi-brand AC supply for residential and commercial use",
+      "Product-selection assistance based on the space and cooling need",
+      "Installation and after-sales service path after purchase",
+    ],
+    serviceIncludes: [
+      "Discussion of capacity, brand preference, and use case",
+      "Supply of the agreed AC unit",
+      "Coordination with installation when required",
+      "After-sales service support as agreed",
+    ],
+    commonReasons: [
+      "Buying a new AC for a home or commercial space",
+      "Replacing an older air-conditioner",
+      "Need help choosing a suitable multi-brand unit",
+    ],
+    relatedServices: ["ac-installation", "ac-maintenance", "ac-amc"],
+    seoTitle: "AC Sales Chennai | Multi-Brand AC Dealer | TECHNO CARE",
+    seoDescription:
+      "AC sales in Chennai by TECHNO CARE — aircondition authorised dealer for multi-brand AC supply, installation and after-sales service.",
+    featured: true,
+    order: 0,
+    ctaLabel: "Enquire About AC Sales",
+  },
+  {
     id: "ac-installation",
     slug: "ac-installation",
     category: "ac",
@@ -36,6 +73,7 @@ export const services: Service[] = [
       "AC installation in Chennai and nearby areas by TECHNO CARE. Practical fitting, commissioning, and handover for new or replacement air-conditioning systems.",
     featured: true,
     order: 1,
+    ctaLabel: "Book Installation",
   },
   {
     id: "ac-repair",
@@ -146,6 +184,81 @@ export const services: Service[] = [
     order: 4,
   },
   {
+    id: "ac-refurbishing",
+    slug: "ac-refurbishing",
+    category: "ac",
+    title: "AC Refurbishing",
+    shortTitle: "AC Refurbishing",
+    description:
+      "Inspection, diagnosis, cleaning, repair and testing to restore serviceable AC equipment.",
+    longDescription:
+      "AC refurbishing is for existing air-conditioners that can be restored to useful service. TECHNO CARE starts with inspection and diagnosis, then carries out cleaning, repair, and parts assessment or replacement where required, followed by testing. Refurbishing applies to serviceable equipment — it is not a promise that every unit can be restored, and replacement may still be the practical recommendation after assessment.",
+    icon: "settings",
+    image: "/services/ac-repair.svg",
+    imageAlt: "Illustration of air-conditioning refurbishing.",
+    benefits: [
+      "Structured path from inspection through testing",
+      "Parts assessment before unnecessary replacement spend",
+      "Clear advice if the unit is no longer worth refurbishing",
+    ],
+    serviceIncludes: [
+      "Inspection of the existing unit",
+      "Diagnosis of performance issues",
+      "Cleaning and agreed repair work",
+      "Parts assessment or replacement where required",
+      "Testing after the work",
+    ],
+    commonReasons: [
+      "An older AC that may still have useful life",
+      "Performance loss that routine service alone will not fix",
+      "Preference to restore a serviceable unit before buying new",
+    ],
+    relatedServices: ["ac-repair", "ac-maintenance", "ac-sales"],
+    seoTitle: "AC Refurbishing Chennai | TECHNO CARE",
+    seoDescription:
+      "AC refurbishing in Chennai by TECHNO CARE — inspection, diagnosis, cleaning, repair, parts assessment and testing for serviceable units.",
+    featured: true,
+    order: 5,
+    ctaLabel: "Ask About Refurbishing",
+  },
+  {
+    id: "ac-amc",
+    slug: "ac-amc",
+    category: "ac",
+    title: "AMC (Annual Maintenance)",
+    shortTitle: "AMC",
+    description:
+      "Annual maintenance contracts for preventive and scheduled AC servicing — residential and commercial.",
+    longDescription:
+      "An AMC helps keep air-conditioners on a planned maintenance rhythm instead of waiting for a breakdown. TECHNO CARE discusses residential and commercial AMC needs, including multi-unit premises, then confirms the covered units and visit schedule in writing. This page does not invent visit counts, inclusions, or contract pricing — those details are agreed for each enquiry.",
+    icon: "shield",
+    image: "/services/ac-maintenance.svg",
+    imageAlt: "Illustration of AC annual maintenance contract support.",
+    benefits: [
+      "Preventive servicing planned across the year",
+      "Support for single homes and multi-unit premises",
+      "Clear written confirmation before the contract starts",
+    ],
+    serviceIncludes: [
+      "Discussion of units covered and maintenance goals",
+      "Scheduled preventive maintenance visits as agreed",
+      "Service notes after each visit",
+      "Coordination for repair when outside routine scope",
+    ],
+    commonReasons: [
+      "Wanting preventive AC servicing instead of emergency-only calls",
+      "Multiple ACs that need a shared maintenance plan",
+      "Residential or commercial premises that run cooling daily",
+    ],
+    relatedServices: ["ac-maintenance", "ac-cleaning", "ac-repair"],
+    seoTitle: "AC AMC Chennai | Annual Maintenance | TECHNO CARE",
+    seoDescription:
+      "AC AMC in Chennai by TECHNO CARE — annual maintenance contracts for preventive and scheduled residential and commercial AC servicing.",
+    featured: true,
+    order: 6,
+    ctaLabel: "Request AMC Quote",
+  },
+  {
     id: "portable-ac-services",
     slug: "portable-ac-services",
     category: "ac",
@@ -178,7 +291,7 @@ export const services: Service[] = [
     seoDescription:
       "Portable AC services in Chennai by TECHNO CARE. Setup support, repair, and servicing for portable air-conditioners.",
     featured: false,
-    order: 5,
+    order: 7,
   },
   {
     id: "hvac-system-repair",
@@ -218,7 +331,7 @@ export const services: Service[] = [
     seoDescription:
       "HVAC system repair in Chennai by TECHNO CARE. Practical fault finding and repair for HVAC equipment serving homes and premises.",
     featured: true,
-    order: 6,
+    order: 8,
   },
   {
     id: "hvac-system-maintenance",
@@ -258,7 +371,7 @@ export const services: Service[] = [
     seoDescription:
       "HVAC system maintenance in Chennai by TECHNO CARE. Inspection and servicing to keep HVAC equipment in more reliable working order.",
     featured: true,
-    order: 7,
+    order: 9,
   },
   {
     id: "duct-vent-installation",
@@ -293,7 +406,7 @@ export const services: Service[] = [
     seoDescription:
       "HVAC duct and vent installation in Chennai by TECHNO CARE. Practical ducting and vent work to support airflow in AC and HVAC systems.",
     featured: false,
-    order: 8,
+    order: 10,
   },
   {
     id: "duct-vent-repair",
@@ -332,7 +445,7 @@ export const services: Service[] = [
     seoDescription:
       "HVAC duct and vent repair in Chennai by TECHNO CARE. Repair of damaged, leaking, or disconnected ducts and vents affecting airflow.",
     featured: false,
-    order: 9,
+    order: 11,
   },
   {
     id: "duct-vent-cleaning",
@@ -371,7 +484,7 @@ export const services: Service[] = [
     seoDescription:
       "HVAC duct and vent cleaning in Chennai by TECHNO CARE. Cleaning of ducts and vents to support cleaner airflow in AC and HVAC systems.",
     featured: false,
-    order: 10,
+    order: 12,
   },
 ];
 
@@ -381,7 +494,7 @@ export const serviceCategories: { id: ServiceCategory; title: string; intro: str
       id: "ac",
       title: "Air Conditioning",
       intro:
-        "Installation, repair, maintenance, cleaning, and portable AC support.",
+        "Multi-brand AC sales, installation, repair, maintenance, cleaning, refurbishing, AMC, and portable AC work.",
     },
     {
       id: "hvac",

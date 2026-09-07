@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "bg-accent text-accent-foreground hover:bg-[color-mix(in_srgb,var(--accent)_88%,black)] border-transparent",
+    "bg-primary text-primary-foreground hover:bg-[color-mix(in_srgb,var(--primary)_88%,black)] border-transparent",
   secondary:
     "bg-surface text-foreground hover:bg-muted border-border",
-  dark: "bg-primary text-primary-foreground hover:bg-[color-mix(in_srgb,var(--primary)_88%,black)] border-transparent",
+  dark: "bg-accent text-accent-foreground hover:bg-[color-mix(in_srgb,var(--accent)_88%,black)] border-transparent",
   ghost:
     "bg-transparent text-hero-foreground hover:bg-white/10 border-white/25",
 } as const;

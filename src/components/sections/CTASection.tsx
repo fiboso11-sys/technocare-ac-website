@@ -9,14 +9,17 @@ export function CTASection() {
   return (
     <Section className="bg-hero text-hero-foreground">
       <Container className="max-w-3xl">
-        <h2 className="h2 text-balance">Need AC or HVAC service?</h2>
+        <h2 className="h2 text-balance">Need AC sales, service or AMC?</h2>
         <p className="mt-3 text-base leading-relaxed text-hero-muted">
-          Contact {company.name} for installation, repair, maintenance, and
-          cleaning requirements in {company.serviceArea}.
+          {company.positioning}. Contact {company.name} for{" "}
+          {company.offerLine.toLowerCase()} in {company.serviceArea}.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button href={cta.primary.href} variant="primary">
             {cta.primary.label}
+          </Button>
+          <Button href={cta.sales.href} variant="ghost">
+            {cta.sales.label}
           </Button>
           <PhoneButton variant="ghost" showNumber />
         </div>

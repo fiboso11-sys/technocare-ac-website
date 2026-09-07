@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CTASection } from "@/components/sections/CTASection";
+import { BrandsSection } from "@/components/sections/BrandsSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
@@ -16,9 +17,8 @@ import { getServicesByCategory } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About TECHNO CARE | AC & HVAC Services in Chennai",
-  description:
-    "TECHNO CARE is an AC and HVAC service business in Nolambur, Chennai, covering installation, repair, maintenance, and cleaning for Chennai and nearby areas.",
+  title: "About TECHNO CARE | Aircondition Authorised Dealer Sales & Service",
+  description: aboutContent.whoWeAre,
   path: "/about",
 });
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title={`${company.name} — AC and HVAC services in Chennai`}
+        title={`${company.name} — ${company.positioning}`}
         description={aboutContent.whoWeAre}
       >
         <PhoneButton variant="ghost" />
@@ -47,12 +47,14 @@ export default function AboutPage() {
         </Container>
       </Section>
 
+      <BrandsSection showLink tone="light" />
+
       <Section className="bg-background">
         <Container>
           <SectionHeading
             className="mb-8"
             title="AC services"
-            description="Air-conditioning installation, repair, maintenance, cleaning, and portable AC support."
+            description="Air-conditioning sales support, installation, repair, maintenance, cleaning, AMC, and portable AC support."
           />
           <ServiceGrid services={getServicesByCategory("ac")} />
         </Container>

@@ -31,6 +31,8 @@ export type Service = {
   seoDescription: string;
   featured: boolean;
   order: number;
+  /** Optional lead CTA label on the service detail page. */
+  ctaLabel?: string;
 };
 
 export type NavItem = {

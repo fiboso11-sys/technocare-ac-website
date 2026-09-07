@@ -3,12 +3,12 @@ import { company } from "@/data/company";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${company.name} — AC & HVAC Services`,
+    name: `${company.name} — Aircondition Authorised Dealer Sales & Service`,
     short_name: company.shortName,
     description: company.description,
     start_url: "/",
     display: "browser",
-    background_color: "#f3f6f8",
-    theme_color: "#0b1f2e",
+    background_color: "#f7f8fa",
+    theme_color: "#143a6b",
   };
 }

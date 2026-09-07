@@ -110,7 +110,7 @@ export function HeroFallbackVisual() {
         fontSize="14"
         letterSpacing="0.6"
       >
-        AC & HVAC services · {company.city}
+        Multi-Brand AC · {company.city}
       </text>
     </svg>
   );
